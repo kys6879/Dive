@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/pages/BackupSettingPage.dart';
 import 'package:flutterapp/pages/PushSettingPage.dart';
@@ -45,6 +46,49 @@ class SettingPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => VersionSettingPage()),
                   );
+                }),
+            RaisedButton(
+                child: Text('데이터 삽입(document 생성)'),
+                onPressed: () {
+                  Firestore.instance
+                      .collection("test")
+                      .add({'title':'title', 'content':'content'});
+                }),
+            RaisedButton(
+                child: Text('데이터 삽입(이미 존재하는 document)'),
+                onPressed: () {
+                  Firestore.instance
+                      .collection("test")
+                      .document("read")
+                      .setData({'title':'newTitle', 'column':'test'});
+                }),
+            RaisedButton(
+                child: Text('데이터 읽기'),
+                onPressed: () {
+                  Firestore.instance
+                      .collection("test")
+                      .document("read")
+                      .get()
+                      .then((DocumentSnapshot ds) {
+                         print(ds['title']);
+                         print(ds['column']);
+                  });
+                }),
+            RaisedButton(
+                child: Text('데이터 수정'),
+                onPressed: () {
+                  Firestore.instance
+                      .collection("test")
+                      .document("read")
+                      .updateData({'title':'newTitle2'});
+                }),
+            RaisedButton(
+                child: Text('데이터 삭제'),
+                onPressed: () {
+                  Firestore.instance
+                      .collection("test")
+                      .document("read")
+                      .delete();
                 }),
           ],
         ));
