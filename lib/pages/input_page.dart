@@ -13,10 +13,13 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   int currentStep = 0;
   // step2 디버그용 리스트. rx를 이용할 게 아니라면 아래 주석을 살려서 탑다운으로 데이터를 처리하는 게 저장이나 불러오기에 깔끔하지 않은가 싶음.
+  // 부모 컴포넌트의 데이터
   List _emotions = [];
   // 동작확인 및 스텝1, 3 구현 후 삭제 바람
+  // 서브 컴포넌트에서 주소값(함수)로 호출
   get emotions => this._emotions;
   set emotions(data) => this._emotions = data;
+  // 부모 컴포넌트의 데이터를 자식 컴포넌트에서 호출하기 위한 함수(callback이 아니라, promise 패턴이었죠;; 죄송합니다)
   helloEmotions() {
     print('여기는 루트입니다: ${this.emotions}');
   }
