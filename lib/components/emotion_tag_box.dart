@@ -5,8 +5,9 @@ import 'emotion_tag.dart';
 
 class EmotionTagBox extends StatefulWidget {
   List emotions;
+  Function debugFunction;
 
-  EmotionTagBox({Key key, this.emotions}) : super(key: key);
+  EmotionTagBox({Key key, this.emotions, this.debugFunction}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _EmotionTagBoxState();
@@ -29,6 +30,7 @@ class _EmotionTagBoxState extends State<EmotionTagBox> {
                   .removeWhere((element) => element['index'] == index);
             else if (widget.emotions.length == 5) {
               //TODO: Toast 등으로 변경
+              widget.debugFunction();
               print('이미 5개를 모두 선택하였습니다.');
               return;
             } else
