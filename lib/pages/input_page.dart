@@ -5,7 +5,6 @@ import 'package:flutterapp/pages/input_page_step1.dart';
 import 'package:flutterapp/pages/input_page_step2.dart';
 import 'package:flutterapp/pages/input_page_step3.dart';
 import 'package:flutterapp/provider/input/tag_provider.dart';
-import 'package:flutterapp/provider/input/tag_provider.dart';
 import 'package:provider/provider.dart';
 
 class InputPage extends StatefulWidget {
@@ -15,14 +14,55 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int currentStep = 0;
-  // step2 디버그용 리스트. rx를 이용할 게 아니라면 아래 주석을 살려서 탑다운으로 데이터를 처리하는 게 저장이나 불러오기에 깔끔하지 않은가 싶음.
-  List emotions = [];
-// Record를 통째로 받아서 사용할 경우 아래 주석 살려서 처리(Step2 기준)
-//  Record _record;
-//
-//  get emotions => _record?.emotions;
-//
-//  set emotions(List<Emotion> values) => {_record.emotions = values};
+  int _score = 0;
+  String _description;
+  int _dailyId;
+  String _updatedAt;
+  String _createdAt;
+  List _tags = [];
+  List _emotions = [];
+
+  int get score => _score;
+
+  set score(int value) {
+    _score = value;
+  }
+
+  String get description => _description;
+
+  set description(String value) {
+    _description = value;
+  }
+
+  int get dailyId => _dailyId;
+
+  set dailyId(int value) {
+    _dailyId = value;
+  }
+
+  String get updatedAt => _updatedAt;
+
+  set updatedAt(String value) {
+    _updatedAt = value;
+  }
+
+  String get createdAt => _createdAt;
+
+  set createdAt(String value) {
+    _createdAt = value;
+  }
+
+  List get tags => _tags;
+
+  set tags(List value) {
+    _tags = value;
+  }
+
+  List get emotions => _emotions;
+
+  set emotions(List value) {
+    _emotions = value;
+  }
 
   PageController _controller = PageController(
     initialPage: 0,
